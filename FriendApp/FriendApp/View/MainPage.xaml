@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FriendApp"
+             x:Class="FriendApp.MainPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+" 
+                     Command="{Binding addFriendCommand}"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <ListView Header="Contactos"
+                  Footer="Jose Aguirre"
+                  HasUnevenRows="True"
+                  RowHeight="20"
+                  SeparatorColor="Blue">
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     Padding="10"
+                                     BackgroundColor="Orange">
+                            <Label TextColor="White"
+                                   VerticalOptions="Center"/>
+                            
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.GroupHeaderTemplate>
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center">
+                        <Label Text="Lista Amigos"
+                               TextColor="DarkBlue"/>
+                        <Label Text="Mejores Clientes"
+                               TextColor="Purple"/>
+                    </StackLayout>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Nombre"/>
+                            <Label Text="Teléfono"/>
+                            <Image Source="phone.png"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.FooterTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center">
+                        <Label Text="Texto 1"
+                               TextColor="DarkBlue"/>
+                        <Label Text="Texto 2"
+                               TextColor="Purple"/>
+                    </StackLayout>
+                </DataTemplate>
+            </ListView.FooterTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
