@@ -22,5 +22,15 @@ namespace FriendApp.ViewModel
 
             //PAGINA 16 DEL PDF AGREGAR EN EL CONSTRUCTOR 
         }
+        public MainPageViewModel(INavigation navigation)
+        {
+            Friends = friendRepository.GetAllGrouped();
+            Navigation = navigation;
+            addFriendCommand = new Command(async () => await AddFriend());
+        }
+        public async Task AddFriend()
+        {
+            await Navigation.PushAsync(new FriendPage());
+        }
     }
 }

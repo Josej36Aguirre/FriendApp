@@ -1,19 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:FriendApp"
-             x:Class="FriendApp.MainPage">
+             xmlns:local="clr-namespace:FriendApp.Behaviors"
+             x:Class="FriendApp.View.MainPage">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ItempedAttached x:Key="Commbeha"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="+" 
                      Command="{Binding addFriendCommand}"/>
     </ContentPage.ToolbarItems>
     <StackLayout>
-        <ListView Header="Contactos"
-                  Footer="Jose Aguirre"
+        <ListView ItemsSource="{Binding Friends}" 
+            Header="Mis Amigos"
+                  Footer="Todos los derechos reservados"
                   HasUnevenRows="True"
-                  RowHeight="20"
-                  SeparatorColor="Blue">
+                  RowHeight="40"
+                  SeparatorColor="Blue"
+                  IsGroupingEnabled="True"
+                  GroupShortNameBinding="{Binding Key}"
+                  local:ItempedAttached.Command ="{Binding ITemTappedCommand}"
+                  SelectedItem="{Binding CurrentFriend}">
             <ListView.GroupHeaderTemplate>
                 <DataTemplate>
                     <ViewCell>

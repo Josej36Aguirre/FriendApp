@@ -13,5 +13,9 @@ namespace FriendApp
 		{
 			InitializeComponent();
 		}
+        protected override void OnAppearing()
+        {
+            this.BindingContext = new MainPageViewModel(Navigation);
+        }
 	}
 }

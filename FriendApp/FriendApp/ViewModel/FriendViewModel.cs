@@ -32,6 +32,14 @@ namespace FriendApp.ViewModel
             await App.DataBase.SaveFriendAsync(FriendModel);
             await Navigation.PopToRootAsync();
         }
+        private Friend currentFriend;
+
+        public Friend CurrentFriend
+        {
+            get { return currentFriend; }
+            set { currentFriend = value; }
+        }
+
 
     }
 }
