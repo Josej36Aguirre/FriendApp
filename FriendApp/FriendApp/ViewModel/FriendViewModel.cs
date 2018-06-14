@@ -10,6 +10,7 @@ namespace FriendApp.ViewModel
    public class FriendViewModel
     {
         private INavigation Navigation;
+        private Friend currentFriend;
         public Command   SaveCommand { get; set; }
         public Command DeleteCommand { get; set; }
         public bool IsEnabled { get; set; }
@@ -32,13 +33,16 @@ namespace FriendApp.ViewModel
             await App.DataBase.SaveFriendAsync(FriendModel);
             await Navigation.PopToRootAsync();
         }
-        private Friend currentFriend;
+       
 
         public Friend CurrentFriend
         {
             get { return currentFriend; }
-            set { currentFriend = value; }
+            set {
+                SetValue(ref currentFriend, value);
+            }
         }
+        public Command ItemTappedCommand { get; set; }
 
 
     }
